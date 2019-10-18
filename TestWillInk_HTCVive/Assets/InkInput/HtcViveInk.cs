@@ -5,12 +5,24 @@ using Valve.VR;
 
 namespace Wacom.Ink
 {
-	public class HtcViveInk : MonoBehaviour
+	interface IPathCollection
+	{
+		int GetPathsCount();
+
+		List<float> GetPathAt(int index);
+
+		void ClearAllPaths();
+	}
+
+	public class HtcViveInk : MonoBehaviour, IPathCollection
 	{
 		#region Fields
 
 		private IInkWriter m_inkWriter;
+		private IPathProvider m_pathProvider;
 		private SteamVR_Input_Sources? m_strokeDevice;
+
+		private List<List<float>> m_paths;
 
 		#endregion
 
@@ -18,6 +30,9 @@ namespace Wacom.Ink
 		void Start()
 		{
 			m_inkWriter = GetComponent<IInkWriter>();
+			m_pathProvider = m_inkWriter as IPathProvider;
+
+			m_paths = new List<List<float>>();
 		}
 
 		void Update()
@@ -57,6 +72,13 @@ namespace Wacom.Ink
 					m_inkWriter.OnPointerReleased(ref pp);
 
 					m_strokeDevice = null;
+
+					if (m_pathProvider != null)
+					{
+						// copy the path
+						List<float> path = new List<float>(m_pathProvider.GetPath());
+						m_paths.Add(path);
+					}
 				}
 				else if (action.state)
 				{
@@ -75,6 +97,25 @@ namespace Wacom.Ink
 
 			return new PointerPoint(ps.localPosition, 0.5f, ps.updateTime);
 		}
+
+		#region IPathCollection
+
+		public int GetPathsCount()
+		{
+			return m_paths.Count;
+		}
+
+		public List<float> GetPathAt(int index)
+		{
+			return m_paths[index];
+		}
+
+		public void ClearAllPaths()
+		{
+			m_paths.Clear();
+		}
+
+		#endregion
 	}
 }
 

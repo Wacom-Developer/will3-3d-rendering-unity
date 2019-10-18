@@ -5,7 +5,7 @@
       "app_key": "application.generated.unity.testwillink_htcvive.exe",
       "launch_type": "url",
       "url": "steam://launch/",
-      "action_manifest_path": "C:\\BB\\will-unity\\TestWillInk_HTCVive\\actions.json",
+      "action_manifest_path": "C:\\BB\\will3-3d-rendering-unity\\TestWillInk_HTCVive\\actions.json",
       "strings": {
         "en_us": {
           "name": "TestWillInk_HTCVive [Testing]"
