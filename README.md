@@ -3,7 +3,6 @@
 
 **NOTICE:**
 
-All the content provided in this repository is **classified as Wacom Confidential Material**, therefore the signed NON-DISCLOSURE AGREEMENT applies.
 Be aware that the **technology components are still under active development** with minimal QA. Moreover, **API interfaces and functionality could be changed or removed**.
 
 
