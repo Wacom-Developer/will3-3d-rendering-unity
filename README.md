@@ -22,7 +22,7 @@ WILL XR Ink is a component for producing and rendering of 3D digital ink in Unit
 
 ### Included components:
 
-  Wacom.Ink.Unity.0.3.3.unitypackage - a unity package containing the WILL XR Ink component.
+  Wacom.Ink.Unity.0.3.5.unitypackage - a unity package containing the WILL XR Ink component.
 
 ### Included demo projects:
 
